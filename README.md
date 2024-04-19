@@ -1,1 +1,1 @@
-# open-piggy-bank
+# Open Piggy Bank
