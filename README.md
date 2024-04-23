@@ -1,6 +1,18 @@
 # Open Piggy Bank
 
+## Contract design ideas
+
+This smart contract simulates a traditional piggy bank, enabling users to save and manage their funds towards a specific goal in a transparent and secure way.
+
+1. **Owner**: The owner who deploys this contract is the only user of it. This cannot be changed after the deployment.
+2. **Goal**: The goal of savings is set through the constructor during deployment and remains fixed; once deployed, the goal cannot be modified or updated.
+3. **Deposit**: The owner can deposit any amount of funds to the piggy bank at any time. Only the owner allowed to make deposits.
+4. **Withdraw**: After reaching the goal, the owner can withdraw their entire balance from the piggy bank. Partial withdrawals are not permitted.
+5. **Balance**: The current balance can be viewed by anyone without incurring a gas cost.
+
 ## Workflows
+
+### Source control
 
 This repo was created with Remix IDE's basic template. When working with this repo in the Remix IDE, follow the below steps:
 
