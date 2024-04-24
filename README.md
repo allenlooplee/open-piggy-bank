@@ -16,6 +16,7 @@ This smart contract simulates a traditional piggy bank, enabling users to save a
 
 1. [Prefer call function with Checks-Effects-Interactions pattern](https://consensys.io/diligence/blog/2019/09/stop-using-soliditys-transfer-now/) ([Updated syntax of call function](https://ethereum.stackexchange.com/questions/19341/address-send-vs-address-transfer-best-practice-usage))
 2. [Use uint256 instead of uint](https://ethereum.stackexchange.com/questions/43241/why-write-uint256-instead-of-uint-if-theyre-the-same-thing)
+3. [Solidity style guide](https://docs.soliditylang.org/en/latest/style-guide.html)
 
 ## Workflows
 
