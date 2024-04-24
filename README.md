@@ -1,8 +1,8 @@
 # Open Piggy Bank
 
-## Contract design ideas
-
 This smart contract simulates a traditional piggy bank, enabling users to save and manage their funds towards a specific goal in a transparent and secure way.
+
+## Contract design ideas
 
 1. **Owner**: The owner who deploys this contract is the only user of it. This cannot be changed after the deployment.
 2. **Goal**: The goal of savings is set through the constructor during deployment and remains fixed; once deployed, the goal cannot be modified or updated.
