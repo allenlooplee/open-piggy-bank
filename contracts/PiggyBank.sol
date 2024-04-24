@@ -10,7 +10,7 @@ contract PiggyBank {
     event Withdrawal(address indexed withdrawer, uint256 amount);
 
     modifier onlyOwner() {
-        require(msg.sender == owner, "Only the owner can perform this action.");
+        require(msg.sender == owner, "Owner only.");
         _;
     }
 
