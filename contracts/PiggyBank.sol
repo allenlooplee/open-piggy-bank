@@ -1,18 +1,38 @@
 // SPDX-License-Identifier: MIT
-
 pragma solidity >=0.8.2 <0.9.0;
 
 contract PiggyBank {
     address public owner;
-    uint public withdrawalThreshold;
+    uint256 public goal;
+    uint256 public balance;
+
+    event Deposit(address indexed depositor, uint256 amount);
+    event Withdrawal(address indexed withdrawer, uint256 amount);
 
     modifier onlyOwner() {
         require(msg.sender == owner, "Only the owner can perform this action.");
         _;
     }
 
-    constructor(uint _withdrawalThreshold) {
+    constructor(uint256 goal_) {
         owner = msg.sender;
-        withdrawalThreshold = _withdrawalThreshold;
+        goal = goal_;
+    }
+
+    function deposit() public payable onlyOwner {
+        balance += msg.value;
+        emit Deposit(msg.sender, msg.value);
+    }
+
+    function withdraw() public onlyOwner {
+        require(balance >= goal, "Goal not reached.");
+
+        // Use Checks-Effects-Interactions pattern to preventing reentrancy
+        uint256 amount = balance;
+        balance = 0;
+        (bool success, ) = owner.call{value: amount}("");
+        require(success, "Transfer failed.");
+
+        emit Withdrawal(owner, amount);
     }
 }
