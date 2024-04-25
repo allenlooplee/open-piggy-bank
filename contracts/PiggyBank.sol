@@ -14,6 +14,7 @@ contract PiggyBank {
         _;
     }
 
+    // Ether unit of goal is Wei
     constructor(uint256 goal_) {
         owner = msg.sender;
         goal = goal_;
