@@ -20,16 +20,14 @@ This smart contract simulates a traditional piggy bank, enabling users to save a
 
 ### Unit test scenarios
 
-1. constructor
-   - Initial values of owner, goal and balance
-2. deposit
-   - When caller is owner and caller has enough ether
-   - When caller is not owner
-   - When caller is owner but caller hasn't enough ether
-3. withdraw
-   - When caller is owner and goal is reached
-   - When caller is not owner
-   - When caller is owner but goal is not reached
+1. When caller is owner
+   - Check initial values
+   - Test deposit
+   - Test withdraw when goal is reached
+   - Test withdraw when goal is not reached
+2. When caller is not owner
+   - Test deposit
+   - Test withdraw
 
 ## Workflows
 
