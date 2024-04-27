@@ -12,52 +12,44 @@ import "remix_accounts.sol";
 import "../contracts/PiggyBank.sol";
 
 // File name has to end with '_test.sol', this file can contain more than one testSuite contracts
-contract testSuite is PiggyBank {
-    address acc0;
-
-    PiggyBank bank;
-
-    constructor() PiggyBank(5 ether) {}
+contract PiggyBankOwnerTest is PiggyBank {
+    constructor() PiggyBank(100) {}
 
     /// 'beforeAll' runs before all other tests
     /// More special functions are: 'beforeEach', 'beforeAll', 'afterEach' & 'afterAll'
-    function beforeAll() public {
-        // <instantiate contract>
-        acc0 = TestsAccounts.getAccount(0);
-        bank = new PiggyBank(5 ether);
-    }
+    function beforeAll() public {}
 
     function checkInitialValues() public {
-        Assert.equal(owner, acc0, "owner is not acc0");
-        Assert.equal(goal, 5 ether, "goal is not 5 ether");
-        Assert.equal(balance, 0, "balance is not 0");
-        Assert.equal(bank.getBalance(), uint256(0), "");
-        Assert.equal(bank.goal(), uint256(5 ether), "");
-    }
-
-    function checkSuccess() public {
         // Use 'Assert' methods: https://remix-ide.readthedocs.io/en/latest/assert_library.html
-        Assert.ok(2 == 2, 'should be true');
-        Assert.greaterThan(uint(2), uint(1), "2 should be greater than to 1");
-        Assert.lesserThan(uint(2), uint(3), "2 should be lesser than to 3");
+        Assert.equal(owner, TestsAccounts.getAccount(0), "owner should be account-0");
+        Assert.equal(goal, 100, "goal should be 100");
+        Assert.equal(balance, 0, "balance should be 0");
     }
 
-    function checkSuccess2() public pure returns (bool) {
-        // Use the return value (true or false) to test the contract
-        return true;
-    }
-    
-    function checkFailure() public {
-        Assert.notEqual(uint(1), uint(1), "1 should not be equal to 1");
+    /// #sender: account-0
+    /// #value: 20
+    function testDeposit() public payable {
+        Assert.equal(msg.value, 20, "value should be 20");
+        Assert.equal(balance, 0, "balance should be 0 before deposit");
+        deposit();
+        Assert.equal(balance, 20, "balance should be 20 after deposit");
     }
 
-    /// Custom Transaction Context: https://remix-ide.readthedocs.io/en/latest/unittesting.html#customization
-    /// #sender: account-1
-    /// #value: 100
-    function checkSenderAndValue() public payable {
-        // account index varies 0-9, value is in wei
-        Assert.equal(msg.sender, TestsAccounts.getAccount(1), "Invalid sender");
-        Assert.equal(msg.value, 100, "Invalid value");
+    /// #sender: account-0
+    /// #value: 80
+    function testDepositToReachGoal() public payable {
+        Assert.equal(msg.value, 80, "value should be 80");
+        Assert.equal(balance, 20, "balance should be 20 before deposit");
+        deposit();
+        Assert.equal(balance, goal, "goal should be reached after deposit");
+    }
+
+    /// #sender: account-0
+    function testWithdraw() public {
+        Assert.equal(balance, goal, "goal should be reached");
+        Assert.equal(balance, 100, "balance should be 100 before withdraw");
+        withdraw();
+        Assert.equal(balance, 0, "balance should be 0 after withdraw");
     }
 }
     
