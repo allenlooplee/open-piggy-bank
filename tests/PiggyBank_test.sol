@@ -12,13 +12,27 @@ import "remix_accounts.sol";
 import "../contracts/PiggyBank.sol";
 
 // File name has to end with '_test.sol', this file can contain more than one testSuite contracts
-contract testSuite {
+contract testSuite is PiggyBank {
+    address acc0;
+
+    PiggyBank bank;
+
+    constructor() PiggyBank(5 ether) {}
 
     /// 'beforeAll' runs before all other tests
     /// More special functions are: 'beforeEach', 'beforeAll', 'afterEach' & 'afterAll'
     function beforeAll() public {
         // <instantiate contract>
-        Assert.equal(uint(1), uint(1), "1 should be equal to 1");
+        acc0 = TestsAccounts.getAccount(0);
+        bank = new PiggyBank(5 ether);
+    }
+
+    function checkInitialValues() public {
+        Assert.equal(owner, acc0, "owner is not acc0");
+        Assert.equal(goal, 5 ether, "goal is not 5 ether");
+        Assert.equal(balance, 0, "balance is not 0");
+        Assert.equal(bank.getBalance(), uint256(0), "");
+        Assert.equal(bank.goal(), uint256(5 ether), "");
     }
 
     function checkSuccess() public {
