@@ -2,23 +2,23 @@
 
 This smart contract simulates a traditional piggy bank, enabling users to save and manage their funds towards a specific goal in a secure way.
 
-## Contract
+## Contract Design
 
-### Requirements
+### Members
 
-1. **Owner**: The owner who deploys this contract is the only user of it. This cannot be changed after the deployment.
-2. **Goal**: The goal of savings is set through the constructor during deployment and remains fixed; once deployed, the goal cannot be modified or updated.
-3. **Deposit**: The owner can deposit any amount of funds to the piggy bank at any time. Only the owner allowed to make deposits.
-4. **Withdraw**: After reaching the goal, the owner can withdraw their entire balance from the piggy bank. Partial withdrawals are not permitted.
-5. **Balance**: The current balance can be viewed by anyone without incurring a gas cost.
+1. **owner variable**: The owner who deploys this contract is the only user of it. This cannot be changed after the deployment.
+2. **goal variable**: The goal of savings is set through the constructor during deployment and remains fixed; once deployed, the goal cannot be modified or updated.
+3. **balance variable**: The current balance can be viewed by anyone without incurring a gas cost.
+4. **deposit payable function**: The owner can deposit any amount of funds to the piggy bank at any time. Only the owner allowed to make deposits.
+5. **withdraw function**: After reaching the goal, the owner can withdraw their entire balance from the piggy bank. Partial withdrawals are not permitted.
 
-### Implementation considerations
+### Implementation Considerations
 
 1. [Prefer call function with Checks-Effects-Interactions pattern](https://consensys.io/diligence/blog/2019/09/stop-using-soliditys-transfer-now/) ([Updated syntax of call function](https://ethereum.stackexchange.com/questions/19341/address-send-vs-address-transfer-best-practice-usage))
 2. [Use uint256 instead of uint](https://ethereum.stackexchange.com/questions/43241/why-write-uint256-instead-of-uint-if-theyre-the-same-thing)
 3. [Solidity style guide](https://docs.soliditylang.org/en/latest/style-guide.html)
 
-## Unit testing
+## Unit Testing
 
 ### Scenarios
 
@@ -31,13 +31,13 @@ This smart contract simulates a traditional piggy bank, enabling users to save a
    - Test deposit
    - Test withdraw
 
-### Side notes
+### Side Notes
 
 1. Unit tests can be written in both Solidity and JavaScript.
 2. It's simple to write unit tests in Solidity with Remix ID's Solidity Unit Testing plugin. But it seems limitted when I want to test withdraw when goal is not reached.
 3. It's powerful to write unit tests in JavaScript with Chai, Mocha and Hardhat-ethers. But you need to equip yourself with a bunch of knowledge and skills.
 
-### Useful guides
+### Useful Guides
 
 1. [Testing using Chai & Mocha](https://remix-ide.readthedocs.io/en/latest/testing_using_Chai_%26_Mocha.html)
 2. [How to Unit Test a Smart Contract](https://docs.alchemy.com/docs/how-to-unit-test-a-smart-contract)
@@ -47,7 +47,7 @@ This smart contract simulates a traditional piggy bank, enabling users to save a
 
 ## Workflows
 
-### Source control
+### Source Control
 
 This repo was created with Remix IDE's basic template. When working with this repo in the Remix IDE, follow the below steps:
 
