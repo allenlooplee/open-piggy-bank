@@ -16,6 +16,7 @@ contract PiggyBank {
 
     // Ether unit of goal is Wei
     constructor(uint256 goal_) {
+        require(goal_ > 0, "Goal is not a positive number.");
         owner = msg.sender;
         goal = goal_;
     }
@@ -26,13 +27,13 @@ contract PiggyBank {
     }
 
     function withdraw() public onlyOwner {
-        require(balance >= goal, "Goal not reached.");
+        require(balance >= goal, "Goal is not reached.");
 
         // Use Checks-Effects-Interactions pattern to preventing reentrancy
         uint256 amount = balance;
         balance = 0;
         (bool success, ) = owner.call{value: amount}("");
-        require(success, "Transfer failed.");
+        require(success, "Withdrawal failed.");
 
         emit Withdrawal(owner, amount);
     }
