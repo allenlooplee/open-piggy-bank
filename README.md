@@ -23,7 +23,8 @@ This smart contract simulates a traditional piggy bank, enabling users to save a
 ### Scenarios
 
 1. When caller is owner
-   - Check initial values
+   - Goal is a positive number
+   - Goal is zero
    - Test deposit
    - Test withdraw when goal is reached
    - Test withdraw when goal is not reached
