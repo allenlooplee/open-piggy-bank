@@ -13,6 +13,12 @@ describe("PiggyBank", function() {
         expect(await piggyBank.balance()).to.equal(0);
     });
 
+    it("should reject deploy if goal is 0", async function () {
+        const PiggyBank = await ethers.getContractFactory("PiggyBank");
+
+        await expect(PiggyBank.deploy(0)).to.be.reverted;
+    });
+
     it("should accept deposit from the owner", async function () {
         const PiggyBank = await ethers.getContractFactory("PiggyBank");
         const piggyBank = await PiggyBank.deploy(100);
@@ -36,7 +42,7 @@ describe("PiggyBank", function() {
         expect(await piggyBank.balance()).to.equal(0);
     });
 
-    it('should reject withdrawal from the owner when goal is not reached', async function () {
+    it("should reject withdrawal from the owner when goal is not reached", async function () {
         const PiggyBank = await ethers.getContractFactory('PiggyBank');
         const piggyBank = await PiggyBank.deploy(100);
         const [owner] = await ethers.getSigners();
