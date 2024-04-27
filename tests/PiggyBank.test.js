@@ -7,6 +7,7 @@ describe("PiggyBank", function() {
         const piggyBank = await PiggyBank.deploy(100);
         const [owner] = await ethers.getSigners();
 
+        // Note the usage of checking public variables with await
         expect(await piggyBank.owner()).to.equal(owner.address);
         expect(await piggyBank.goal()).to.equal(100);
         expect(await piggyBank.balance()).to.equal(0);
@@ -18,6 +19,7 @@ describe("PiggyBank", function() {
         const [owner] = await ethers.getSigners();
 
         expect(await piggyBank.balance()).to.equal(0);
+        // Note the usage of sending ethers by calling parameterless payable function
         await piggyBank.deposit({value: 20});
         expect(await piggyBank.balance()).to.equal(20);
     });
@@ -39,6 +41,7 @@ describe("PiggyBank", function() {
         const piggyBank = await PiggyBank.deploy(100);
         const [owner] = await ethers.getSigners();
 
+        // Note the usage of detecting error with "to.be.reverted"
         await expect(piggyBank.withdraw()).to.be.reverted;
     });
 
@@ -47,6 +50,7 @@ describe("PiggyBank", function() {
         const piggyBank = await PiggyBank.deploy(20);
         const [owner, addr1] = await ethers.getSigners();
 
+        // Note the usage of calling a function with a different account
         await expect(piggyBank.connect(addr1).deposit({value: 20})).to.be.reverted;
     });
 
