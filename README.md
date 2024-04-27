@@ -43,6 +43,7 @@ This smart contract simulates a traditional piggy bank, enabling users to save a
 2. [How to Unit Test a Smart Contract](https://docs.alchemy.com/docs/how-to-unit-test-a-smart-contract)
 3. [Testing contracts](https://hardhat.org/tutorial/testing-contracts)
 4. [Chai matchers](https://ethereum-waffle.readthedocs.io/en/latest/matchers.html)
+5. [Unit Testing a Solidity Smart Contract using Chai & Mocha with TypeScript](https://dev.to/carlomigueldy/unit-testing-a-solidity-smart-contract-using-chai-mocha-with-typescript-3gcj)
 
 ## Workflows
 
