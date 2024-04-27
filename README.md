@@ -18,7 +18,9 @@ This smart contract simulates a traditional piggy bank, enabling users to save a
 2. [Use uint256 instead of uint](https://ethereum.stackexchange.com/questions/43241/why-write-uint256-instead-of-uint-if-theyre-the-same-thing)
 3. [Solidity style guide](https://docs.soliditylang.org/en/latest/style-guide.html)
 
-### Unit test scenarios
+## Unit testing
+
+### Scenarios
 
 1. When caller is owner
    - Check initial values
@@ -28,6 +30,19 @@ This smart contract simulates a traditional piggy bank, enabling users to save a
 2. When caller is not owner
    - Test deposit
    - Test withdraw
+
+### Side notes
+
+1. Unit tests can be written in both Solidity and JavaScript.
+2. It's simple to write unit tests in Solidity with Remix ID's Solidity Unit Testing plugin. But it seems limitted when I want to test withdraw when goal is not reached.
+3. It's powerful to write unit tests in JavaScript with Chai, Mocha and Hardhat-ethers. But you need to equip yourself with a bunch of knowledge and skills.
+
+### Useful guides
+
+1. [Testing using Chai & Mocha](https://remix-ide.readthedocs.io/en/latest/testing_using_Chai_%26_Mocha.html)
+2. [How to Unit Test a Smart Contract](https://docs.alchemy.com/docs/how-to-unit-test-a-smart-contract)
+3. [Testing contracts](https://hardhat.org/tutorial/testing-contracts)
+4. [Chai matchers](https://ethereum-waffle.readthedocs.io/en/latest/matchers.html)
 
 ## Workflows
 
@@ -41,6 +56,6 @@ This repo was created with Remix IDE's basic template. When working with this re
 4. Make sure you have added or selected the right git remote in the DGIT plugin
 5. Clone this repo in the DGIT plugin, which will create a workspace for this repo in the DGIT plugin
 6. Create a new branch in the DGIT plugin before you make any changes to the cloned repo in the DGIT plugin
-7. Change the code
+7. Create or modify, and test the code
 8. Make sure the remote branch matches the local branch in the DGIT plugin
 9. Commit and push your changes to the remote branch in the DGIT plugin
