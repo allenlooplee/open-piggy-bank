@@ -51,5 +51,11 @@ contract PiggyBankOwnerTest is PiggyBank {
         withdraw();
         Assert.equal(balance, 0, "balance should be 0 after withdraw");
     }
+
+    function testChangeGoal() public {
+        Assert.equal(goal, 100, "goal should be 100 before changing it");
+        changeGoal(150);
+        Assert.equal(goal, 150, "goal should be 150 after changing it");
+    }
 }
     
