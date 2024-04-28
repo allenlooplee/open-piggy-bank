@@ -7,10 +7,11 @@ This smart contract simulates a traditional piggy bank, enabling users to save a
 ### Members
 
 1. **owner variable**: The owner who deploys this contract is the only user of it. This cannot be changed after the deployment.
-2. **goal variable**: The goal of savings is set through the constructor during deployment and remains fixed; once deployed, the goal cannot be modified or updated.
+2. **goal variable**: The goal of savings is set through the constructor during deployment and can be modified through the changeGoal function.
 3. **balance variable**: The current balance can be viewed by anyone without incurring a gas cost.
 4. **deposit payable function**: The owner can deposit any amount of funds to the piggy bank at any time. Only the owner allowed to make deposits.
 5. **withdraw function**: After reaching the goal, the owner can withdraw their entire balance from the piggy bank. Partial withdrawals are not permitted.
+6. **changeGoal function**: The goal can only be changed by the owner before any deposit or after withdrawal.
 
 ### Implementation Considerations
 
@@ -28,9 +29,11 @@ This smart contract simulates a traditional piggy bank, enabling users to save a
    - Test deposit
    - Test withdraw when goal is reached
    - Test withdraw when goal is not reached
+   - [Test changeGoal for a couple of owner scenarios](https://github.com/allenlooplee/open-piggy-bank/issues/8)
 2. When caller is not owner
    - Test deposit
    - Test withdraw
+   - [Test changeGoal](https://github.com/allenlooplee/open-piggy-bank/issues/8)
 
 ### Side Notes
 
@@ -45,6 +48,7 @@ This smart contract simulates a traditional piggy bank, enabling users to save a
 3. [Testing contracts](https://hardhat.org/tutorial/testing-contracts)
 4. [Chai matchers](https://ethereum-waffle.readthedocs.io/en/latest/matchers.html)
 5. [Unit Testing a Solidity Smart Contract using Chai & Mocha with TypeScript](https://dev.to/carlomigueldy/unit-testing-a-solidity-smart-contract-using-chai-mocha-with-typescript-3gcj)
+6. [Chai Expect/Should](https://www.chaijs.com/api/bdd/)
 
 ## Workflows
 
@@ -57,7 +61,7 @@ This repo was created with Remix IDE's basic template. When working with this re
 3. Make sure you have filled in your name, your email and the GitHub token in the Settings page
 4. Make sure you have added or selected the right git remote in the DGIT plugin
 5. Clone this repo in the DGIT plugin, which will create a workspace for this repo in the DGIT plugin
-6. Create a new branch in the DGIT plugin before you make any changes to the cloned repo in the DGIT plugin
+6. Create a new branch in the DGIT plugin before you make any changes to the cloned repo in the DGIT plugin (normally make sure the current branch is master before creating a new branch)
 7. Create or modify, and test the code
 8. Make sure the remote branch matches the local branch in the DGIT plugin
 9. Commit and push your changes to the remote branch in the DGIT plugin
