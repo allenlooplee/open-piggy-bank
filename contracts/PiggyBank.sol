@@ -35,6 +35,13 @@ contract PiggyBank {
         (bool success, ) = owner.call{value: amount}("");
         require(success, "Withdrawal failed.");
 
-        emit Withdrawal(owner, amount);
+        emit Withdrawal(msg.sender, amount);
+    }
+
+    function changeGoal(uint256 goal_) public onlyOwner {
+        require(goal_ > 0, "Goal is not a positive number.");
+        require(balance == 0, "Cannot change goal when there're deposits.");
+
+        goal = goal_;
     }
 }
