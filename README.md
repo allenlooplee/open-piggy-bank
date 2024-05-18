@@ -65,3 +65,20 @@ This repo was created with Remix IDE's basic template. When working with this re
 7. Create or modify, and test the code
 8. Make sure the remote branch matches the local branch in the DGIT plugin
 9. Commit and push your changes to the remote branch in the DGIT plugin
+
+### Deployment
+
+When deploying the PiggyBank contract in the Remix IDE, follow the below steps:
+
+1. Make sure MetaMask is installed and configured in the browser
+2. Make sure you have enough funds in your account on the target chain/network
+3. Make sure PiggyBank is up to date by fetching it from GitHub in the DGIT plugin
+4. Make sure PiggyBank is compiled in the Solidity compiler view
+5. Open the Deploy & run transactions view in the Icon Panel
+6. Select *Injected Provided - MetaMask* in the Environment
+7. Select your account in the Account. You can double check your account balance right next to your account address.
+8. Select the compiled PiggyBank in the Contract
+9. Type the desired goal (the unit is Wei) in the textfield right next to the Deploy button, and then press Deploy button. MetaMask will be opened for your confirmation.
+10. When PiggyBank is deployed, you find a *view on etherscan* link and a log entry in the Remix IDE's Terminal, and an item in the Deployed/Unpinned Contracts of the Deploy & run transactions view.
+11. Expand the item and you'll find the deployed PiggyBank is ready for your interaction.
+
