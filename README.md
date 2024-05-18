@@ -68,7 +68,7 @@ This repo was created with Remix IDE's basic template. When working with this re
 
 ### Deployment
 
-When deploying the PiggyBank contract in the Remix IDE, follow the below steps:
+When deploying the PiggyBank contract in the Remix IDE with MetaMask, follow the below steps:
 
 1. Make sure MetaMask is installed and configured in the browser
 2. Make sure you have enough funds in your account on the target chain/network
