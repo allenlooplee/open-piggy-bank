@@ -1,6 +1,6 @@
 # Open Piggy Bank
 
-This smart contract simulates a traditional piggy bank, enabling users to save and manage their funds towards a specific goal in a secure way.
+This smart contract simulates a traditional piggy bank, enabling users to save and manage their funds towards a specific goal in a secure way. This smart contract, as well as its tests, was developed with Remix IDE.
 
 ## Contract Design
 
