@@ -4,6 +4,11 @@ This smart contract simulates a traditional piggy bank, enabling users to save a
 
 ## Contract Design
 
+### Use Cases
+
+1. **Regular Savings Plan**: The owner sets a savings goal and deploys the smart contract. Each Monday, they deposit a fixed amount of funds until their balance reaches the goal. Once achieved, they can withdraw the accumulated funds.
+2. **Ad-Hoc Savings Plan**: The owner sets a savings goal and deploys the smart contract. At any time, they can deposit varying amounts of funds to reach their goal. Once achieved, they can withdraw the accumulated funds.
+
 ### Members
 
 1. **owner variable**: The owner who deploys this contract is the only user of it. This cannot be changed after the deployment.
